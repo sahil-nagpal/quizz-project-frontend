@@ -106,7 +106,6 @@ export const fetchResults = ()=>{
 
 export const updateResults = (data)=>{
     return async(dispatch)=>{
-        console.log("data ::::::::::::::: ",data)
         let response = await API.updateResults(data)
         if(response.success){
             dispatch(userActions.updateUserPoints({"data": response.marks,"updateTable":true}))

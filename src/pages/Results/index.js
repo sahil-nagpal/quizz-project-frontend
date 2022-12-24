@@ -5,9 +5,9 @@ import { fetchResults } from "../../store/slices/userSlice";
 function ResultsTable(){
     const dispatch = useDispatch()
     const {results} = useSelector(state => state.user);
-    useEffect(()=>{},[
+    useEffect(()=>{
         dispatch(fetchResults())
-    ],[])
+    },[])
     return <>
         <table className="ResultsTable__tableContainer">
             <thead>
