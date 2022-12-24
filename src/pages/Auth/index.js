@@ -12,7 +12,7 @@ const Login = ()=>{
     const dispatch = useDispatch()
     const[disableBtn,setDisableBtn] = useState(false)
     const handleUserSubmission = ()=>{
-        setDisableBtn(true)
+       setDisableBtn(true)
        let value = parseInt(usrRef.current.value)
        let name = nameRef.current.value
        if(value !== (firstNum+secondNum)){

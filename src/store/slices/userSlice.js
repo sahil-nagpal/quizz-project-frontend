@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import * as API from '../../api/apis.js';
 import { userActions } from "../index.js";
 let initialState = {
@@ -14,6 +14,7 @@ let initialState = {
         "user":{"name":"arjuna","_id":992},
         "marks":30
     },],
+    userId:null,
     finalResult:false,
     allQuestions : []
 }
@@ -32,7 +33,6 @@ const userSlice = createSlice({
                 if(action.payload.success){
                     state.isUserLoggedIn = true
                     state.userId = action.payload.data
-                    window.localStorage.setItem("userLoggedIn",true)
                 }
             }
             catch(err){
@@ -63,6 +63,7 @@ export const loginUser = (details)=>{
         let response = await API.loginUser(details)
         if(response.success){
             dispatch(userSlice.actions.checkUserState({"success":true,"data":response.userId}))
+           await API.updateResults({"user":response.userId,"marks":0})
         }
         else{
             dispatch(userSlice.actions.setNameError({"value":true}))

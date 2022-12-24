@@ -1,7 +1,6 @@
 import React ,{useEffect, useState} from "react";
 import "./styles.css";
 import ReactCountdownClock  from 'react-countdown-clock';
-import { userActions } from "../../store";
 import { useDispatch,useSelector } from "react-redux";
 import { fetchQuestions,updateResults } from "../../store/slices/userSlice";
 let points = 0
@@ -122,7 +121,6 @@ function QuestionPage(){
                     <div className="Questions__answerMarks">
                         {questionBank[0].answers.map((item,index)=>{
                             return <div key={"index__"+index} className="Questions__answerRadioBtn">
-                                {questionBank[0].correctAnswer}
                             <div className={showCorrectAnswer && index === questionBank[0].correctAnswer ?"success-highlighter": "" }>
                                 <input type={"radio"} id={index+"_0"} name="radio_answer" value={index} checked={valueSelected[index] ? valueSelected[index]:false}  onChange={(e)=>{handleRadioButton(e)}} disabled={disableRdBtn}></input>
                                 <label htmlFor={index+"_0"}>{item}</label>
